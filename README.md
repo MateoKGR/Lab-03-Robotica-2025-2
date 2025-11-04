@@ -18,6 +18,7 @@ Indice:
 8. [Diagrama de flujo](#diagrama)
 9. [Plano de planta](#planos)
 10. [Código desarrollado](#codigo)
+11. [Videos](#videos)
 
 ## Cuadro comparativo
 
