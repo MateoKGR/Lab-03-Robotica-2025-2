@@ -44,6 +44,15 @@ Indice:
 ## Explicación completa
 ## Descripción funcionalidades EPSON RC+ 7.0
 ## Análisis comparativo EPSON RC+ 7.0, RoboDK y RobotStudio
+
+EPSON RC+ 7.0 es el software oficial de programación y control de los robots EPSON. Está pensado para trabajar directamente con el manipulador real, permitiendo definir trayectorias, rutinas y controlar entradas y salidas digitales desde una interfaz bastante intuitiva. Lo más fuerte de EPSON RC+ es su comunicación directa con el robot T3-401S, ya que no requiere configuraciones externas ni licencias adicionales. Sin embargo, es un entorno más cerrado: solo funciona con robots EPSON y no ofrece tantas opciones de simulación avanzada como otras plataformas.
+
+RoboDK, por otro lado, es un software más flexible y multiplataforma. Permite importar modelos de robots de diferentes marcas (ABB, KUKA, Fanuc, Yaskawa, etc.) y programarlos en un entorno 3D muy visual. Además, facilita la generación de código offline, lo que ayuda a probar trayectorias antes de implementarlas físicamente. Es ideal para simulaciones, análisis de alcance, tiempos de ciclo y programación sin depender del hardware, aunque la precisión de la simulación depende del modelo y la calibración.
+
+RobotStudio, desarrollado por ABB, es probablemente el entorno más completo en términos de simulación industrial. Está enfocado en la programación de robots ABB, ofreciendo herramientas de modelado, simulación de celdas completas y generación de código RAPID directamente compatible con los controladores IRC5. Su entorno es más pesado y técnico, pero también más robusto para proyectos de automatización real.
+
+EPSON RC+ es perfecto para la práctica directa con el manipulador EPSON T3-401S; RoboDK es el más versátil para comparar y probar diferentes marcas; y RobotStudio tiene una simulación más avanzada, aunque está cerrado al ecosistema ABB.
+
 ## Diseño técnico del gripper neumático
 ## Diagrama de flujo
 ## Plano de planta
