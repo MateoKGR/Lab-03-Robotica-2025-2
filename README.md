@@ -57,11 +57,11 @@ Para mover el robot manualmente desde EPSON RC+ 7.0 utilizamos la ventana de **R
 
 Lo primero es abrir Robot Manager y presionar el botón **Reset**. Esto limpia cualquier alarma o estado previo que impida mover el robot. Una vez el sistema está limpio, activamos los motores seleccionando **Motor ON**. Con esto, el robot queda listo para aceptar movimientos manuales.
 
-![Robot manager](robot_manager.jpg)
+![Robot manager](images/robot_manager.jpg)
 
 A partir de aquí entramos a la pestaña **Jog & Teach**, que es la que permite moverlo articulado o cartesiano. En esta vista están los botones de traslación y rotación, junto con la posición actual del robot y el selector de modo. Para moverlo de manera articular, simplemente cambiamos el parámetro **Mode a Joint**; con esto, cada flecha corresponde al movimiento directo de una articulación. Si queremos moverlo en coordenadas cartesiana (X, Y, Z), entonces dejamos **Mode: Tool o Mode: World**, dependiendo de si queremos que los desplazamientos sigan el sistema de la herramienta o el del robot.
 
-![Jog & Teach](jogyteach.jpg)
+![Jog & Teach](images/jogyteach.jpg)
 
 El movimiento lineal se hace con las flechas de **X, Y y Z**, mientras que las rotaciones se controlan con los botones **U, V y W**. En esta misma ventana podemos escoger la velocidad del jogging (Low, Medium o High) y la distancia de avance de cada pulsación. Con estas opciones ya es posible mover el robot libremente, registrar puntos y verificar las posiciones antes de programar.
 
