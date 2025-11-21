@@ -141,6 +141,5 @@ Off Out_9  'Desactiva el vacío para soltarlo
 ## Plano de planta
 ![Plano de planta](images/planoplanta.jpg)
 
-## Código desarrollado
-Ajuntado en la carpeta codigo
-## Videos
+## Código desarrollado y videos
+Ajunto en las carpetas correspondientes.
