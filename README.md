@@ -108,27 +108,33 @@ EPSON RC+ es bueno para la práctica directa con el manipulador EPSON T3-401S; R
 ## Diseño técnico del gripper neumático
 ## **Diseño técnico del gripper neumático por vacío, incluyendo diagrama esquemático, componentes utilizados y configuración de las E/S digitales del robot**
 
-Para este laboratorio diseñamos un gripper neumático por vacío pensado específicamente para manipular huevos sin aplicar fuerza mecánica directa. La idea fue mantener la estructura lo más simple posible, aprovechando el hecho de que el robot EPSON T3-401S ya cuenta con salidas digitales que permiten controlar electroválvulas externas.
+Para este laboratorio diseñamos un gripper neumático por vacío pensado específicamente para manipular huevos sin aplicar fuerza mecánica directa. La idea fue mantener la estructura lo más simple posible, aprovechando el hecho de que el robot EPSON T3-401S ya cuenta con salidas digitales que permiten controlar electroválvulas externas. La prioridad era asegurar un agarre suave, estable y repetible durante toda la trayectoria programada.
 
-El gripper está compuesto por una pieza impresa en 3D que diseñamos en Autodesk Inventor. Esta pieza funciona como adaptador mecánico entre la brida del robot y la ventosa de succión. Su función principal es posicionar correctamente la ventosa, mantener la rigidez del conjunto y permitir el paso de la manguera que conecta con el sistema de vacío.
+El gripper está compuesto por una pieza impresa en 3D que fue modelada en Autodesk Inventor. Esta pieza funciona como adaptador entre la brida del robot y la ventosa de succión. El diseño mecánico se realizó tomando como referencia la geometría del flange del T3-401S, que cuenta con dos abrazaderas y orificios roscados tipo **M3**. El acople impreso replica esa distribución, permitiendo fijarlo directamente con dos tornillos.  
+En la parte inferior también se agregaron dos orificios adicionales que permiten unirlo a la pieza en “L” que ya estaba diseñada previamente, lo cual facilita el alineamiento y asegura que la ventosa quede correctamente posicionada. Esta configuración hace que el montaje sea rígido, estable y muy fácil de desmontar si se desea modificar el diseño o imprimir una nueva versión.
 
 Aquí se puede ver el modelo generado en Inventor:
 
 ![Modelo Gripper](/images/gripper.jpg)
 
-El sistema neumático utilizado es sencillo: una ventosa de vacío conectada a un mini generador de vacío o bomba externa, controlada mediante una electroválvula. La electroválvula es la encargada de activar o cortar el flujo de vacío, y su funcionamiento depende directamente de la señal digital enviada desde el controlador del EPSON T3-401S.
+En cuanto al sistema neumático, utilizamos un compresor como fuente de aire, junto con una **válvula reguladora** para ajustar la presión de trabajo. Luego incorporamos una **válvula 5/2**, encargada de suministrar o cortar el paso de aire hacia el generador de vacío. El dispositivo responsable de generar el vacío es un **eyector neumático**, que aprovecha el flujo de aire comprimido para crear succión. También utilizamos mangueras, raccords y conectores estándar para garantizar un flujo constante y sin fugas hacia la ventosa.
 
 El diagrama esquemático del sistema es el siguiente:
 
 ![](/img/diagrama.png)
 
-La integración con el robot se realizó a través de las **E/S digitales**, utilizando la salida **Out_9** como la señal encargada de accionar el vacío. Cuando Out_9 está en estado **ON**, la electroválvula se activa y la ventosa genera vacío; cuando Out_9 está en **OFF**, el vacío se corta y el objeto se libera de forma segura. Esto nos permitió controlar todo el proceso directamente desde el programa del robot.
+La integración con el robot se realizó a través de las **E/S digitales**, usando la salida **Out_9** como la señal encargada de controlar la electroválvula. En nuestro caso, la lógica operó de forma invertida debido al uso de un módulo óptico:  
+- **Out_9 = OFF → La electroválvula se activa → Se genera vacío (agarre)**  
+- **Out_9 = ON  → La electroválvula se desactiva → Se libera el objeto (suelta)**  
 
-En el código que utilizamos (fragmento mostrado abajo), se puede ver cómo Out_9 se activa y desactiva dependiendo del momento en el que se debe recoger o soltar el huevo. Esta lógica se integra dentro de la rutina `Paletizado_01`, que es donde el robot ejecuta los movimientos siguiendo el patrón requerido:
+El módulo óptico cumple la función de aislar eléctricamente el controlador del robot y manejar los **20 V** necesarios para activar el relé de la electroválvula. Cuando el robot cambia el estado de Out_9, el módulo conmuta y permite energizar o cortar la válvula dependiendo del caso. Este sistema es seguro y protege la electrónica del robot.
+
+En el código utilizado (fragmento mostrado abajo), se observa cómo se activa o desactiva Out_9 según el momento de tomar o soltar el huevo. Esta lógica hace parte de la rutina `Paletizado_01`, donde se ejecutan los desplazamientos siguiendo el patrón requerido:
 
 ```vb
 On Out_9   'Activa el vacío para agarrar el huevo
 Off Out_9  'Desactiva el vacío para soltarlo
+
 
 ## Diagrama de flujo
 
