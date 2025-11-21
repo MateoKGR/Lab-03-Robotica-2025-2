@@ -82,6 +82,19 @@ Para identificar cuál nivel de velocidad está activo o está establecido, hay 
 ![Velocidades](images/velocidades.jpg)
 
 ## Descripción funcionalidades EPSON RC+ 7.0
+
+Una de las primeras funciones importantes es la gestión de la conexión con el controlador del robot. En nuestro laboratorio utilizamos la conexión **USB**, que es la más directa para trabajar con el T3-401S. Sin embargo, EPSON RC+ también permite conexiones **Virtual**, que sirven cuando queremos trabajar sin el robot físico conectado. Esto se observa claramente en la interfaz de comunicaciones:
+
+![Comunicación](images/comunicacion.jpg)
+
+Cuando se usa un controlador virtual, el software crea una especie de “robot simulado” que replica el comportamiento del real. Esto nos permite probar trayectorias, revisar errores y validar movimientos antes de ejecutarlos físicamente. Este ambiente de simulación es una de las funciones más representativas del software, y se muestra en la siguiente imagen:
+
+![Entorno Simulación](images/simulacion.jpg)
+
+En cuanto a la comunicación, EPSON RC+ envía todas las instrucciones al controlador del manipulador. Esto incluye comandos como mover un eje, cambiar la velocidad, activar o desactivar salidas digitales, ejecutar una trayectoria o regresar a Home. El controlador interpreta estas órdenes y las convierte en señales para los motores y actuadores del robot. De esta forma, el software no mueve directamente los motores; más bien funciona como el intermediario que traduce lo que programamos en acciones físicas.
+
+Cuando estamos en modo simulación este proceso ocurre internamente, con el controlador virtual calculando cinemática, velocidades y límites tal como lo haría el hardware real. Por eso, lo que probamos en la simulación se comporta prácticamente igual cuando lo ejecutamos en el robot conectado por USB.
+
 ## Análisis comparativo EPSON RC+ 7.0, RoboDK y RobotStudio
 
 EPSON RC+ 7.0 es el software oficial de programación y control de los robots EPSON. Está pensado para trabajar directamente con el manipulador real, nos permite definir trayectorias, rutinas y controlar entradas y salidas digitales desde una interfaz intuitiva. El punto más fuerte de EPSON RC+ es su comunicación directa con el robot T3-401S, ya que no requiere configuraciones externas ni licencias adicionales. Sin embargo, es un entorno más cerrado: solo funciona con robots EPSON y no ofrece tantas opciones de simulación avanzada como otras plataformas.
@@ -93,6 +106,7 @@ RobotStudio, desarrollado por ABB, es a nuestro juicio el entorno más completo 
 EPSON RC+ es bueno para la práctica directa con el manipulador EPSON T3-401S; RoboDK es el más versátil para comparar y probar diferentes marcas; y RobotStudio tiene una simulación más avanzada, aunque está cerrado al ecosistema ABB.
 
 ## Diseño técnico del gripper neumático
+
 ## Diagrama de flujo
 ## Plano de planta
 ## Código desarrollado
