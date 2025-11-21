@@ -52,7 +52,7 @@ Otro aspecto clave es que la lógica de la salida del vacío del robot está inv
 
 Finalmente, esta configuración también mantiene coherencia con el código usado en la práctica. El programa arranca con Home, lo cual resetea la postura del robot a este punto inicial y asegura que toda la rutina Paletizado_01 funcione igual cada vez que se ejecuta. Desde ahí se van recorriendo las posiciones del palette en el orden requerido, alternando entre los dos huevos y controlando el vacío según el patrón del caballo. Toda la lógica del movimiento depende completamente de tener un Home consistente, de aquí que esta configuración fuera necesaria.
 
-## Procedimiento detallado
+## Procedimiento detallado para realizar movimientos manuales
 Para mover el robot manualmente desde EPSON RC+ 7.0 utilizamos la ventana de **Robot Manager**, que es donde se habilitan los motores, se desbloquean las articulaciones y se selecciona el modo de movimiento. El proceso es sencillo, pero debe hacerse en orden para que el robot acepte los comandos de jogging.
 
 Lo primero es abrir Robot Manager y presionar el botón **Reset**. Esto limpia cualquier alarma o estado previo que impida mover el robot. Una vez el sistema está limpio, activamos los motores seleccionando **Motor ON**. Con esto, el robot queda listo para aceptar movimientos manuales.
@@ -65,7 +65,22 @@ A partir de aquí entramos a la pestaña **Jog & Teach**, que es la que permite 
 
 El movimiento lineal se hace con las flechas de **X, Y y Z**, mientras que las rotaciones se controlan con los botones **U, V y W**. En esta misma ventana podemos escoger la velocidad del jogging (Low, Medium o High) y la distancia de avance de cada pulsación. Con estas opciones ya es posible mover el robot libremente, registrar puntos y verificar las posiciones antes de programar.
 
-## Explicación completa
+## Explicación completa sobre los niveles de velocidad para movimientos manuales
+
+Cuando se mueve el robot manualmente desde la ventana **Jog & Teach**, EPSON RC+ permite ajustar la velocidad a la que se desplaza cada vez que se presiona una flecha de movimiento. Esta velocidad no se ajusta directamente con un porcentaje, sino mediante los llamados niveles de **Jog Distance**, que definen qué tan grande es el desplazamiento o rotación que realizará el robot por cada comando. Esto afecta directamente la sensación de “velocidad” durante el jogging.
+
+El panel donde se configuran estos niveles aparece en la sección llamada **Jog Distance**. Allí se pueden ver tres tamaños de paso: **Short, Medium y Long**, junto con la opción **Continuous**. En términos prácticos, cada vez que seleccionas uno de estos valores, el robot se mueve más despacio o más rápido según el tamaño del paso configurado.
+
+En **Short**, los movimientos son pequeños y permiten ajustar la posición con precisión, útil cuando se está cercano a la cubeta o a un punto de enseñanza, en **Medium**, se obtiene un equilibrio entre precisión y velocidad, en **Long**, el robot se mueve con pasos amplios, lo cual se siente como mayor velocidad, ideal cuando hay que cubrir distancias largas dentro del área de trabajo.
+
+Finalmente, **Continuous** mantiene el movimiento mientras se mantenga presionado el botón, en lugar de hacer desplazamientos discretos.
+
+Justo encima de estas opciones también se pueden definir los valores numéricos de los pasos de X, Y, Z y U (rotación). Estos valores determinan cuántos milímetros o grados avanza el robot por pulsación. De esta forma, la velocidad percibida depende tanto del modo seleccionado (Short, Medium o Long) como del tamaño del paso configurado.
+
+Para identificar cuál nivel de velocidad está activo o está establecido, hay que revisar cuál de los botones del panel **Jog Distance** está marcado. El botón seleccionado aparece resaltado y permanece activo mientras se realizan los movimientos manuales.
+
+![Velocidades](images/velocidades.jpg)
+
 ## Descripción funcionalidades EPSON RC+ 7.0
 ## Análisis comparativo EPSON RC+ 7.0, RoboDK y RobotStudio
 
