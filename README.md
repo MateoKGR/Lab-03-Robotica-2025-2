@@ -41,7 +41,30 @@ Indice:
 | **Comunicación con PC** | USB / Ethernet | Ethernet / RS-232 | Ethernet / USB |
 
 ## Descripción de las configuraciones home
+
+Para este laboratorio definimos una configuración Home personalizada para el EPSON T3-401S, diferente a la que aparece por defecto cuando el robot inicia en EPSON RC+. La idea de esta configuración es sencilla: queríamos que el robot arrancara situado exactamente en la mitad del área de trabajo, con el brazo orientado hacia adelante, de manera que el alcance fuera simétrico hacia ambos lados. Por eso la articulación 1 se dejó a 90°, ya que esta orientación coloca el brazo principal alineado con el centro de la mesa, evitando que el robot empiece “sesgado” hacia un lado.
+
+Una vez fijamos ese punto base, ajustamos las demás articulaciones para dejar el robot en una postura estable y segura: el eje vertical se ubicó a una altura que evitará cualquier colisión con la cubeta, y el eje de la herramienta se orientó recto, lo cual facilita el acople del gripper y las primeras aproximaciones a los palettes. Esta posición de Home se convirtió en la referencia de todo el trabajo del laboratorio: desde aquí se definieron los perfiles iniciales de los actuadores, el origen del palette de 30 posiciones (6×5) y la ubicación relativa de los dos huevos que se debían mover.
+
+El Home también fue importante porque el patrón de movimiento exigía alternar entre dos palettes distintos y seguir un recorrido completo sin que las trayectorias se cruzaran. En nuestro caso, ambos palettes son realmente la misma matriz de 30 posiciones, solo que cada uno tiene un origen diferente: uno corresponde a la cubeta vista desde el huevo 1 y el otro desde el huevo 2. Para que todo funcionara de manera coherente, el robot necesitaba comenzar siempre desde un punto totalmente reproducible, y ese punto fue justamente la configuración Home.
+
+Otro aspecto clave es que la lógica de la salida del vacío del robot está invertida: Out_9 en OFF significa agarrar, y Out_9 en ON significa soltar. Para evitar errores al comienzo de la secuencia, la postura de Home debía garantizar que la herramienta no estuviera demasiado cerca de la cubeta al momento de activar o desactivar el vacío. Al iniciar en Home y luego moverse a las posiciones del palette mediante los comandos Jump Pallet(#, posición), el robot siempre se desplaza primero a una altura segura antes de descender, lo que reduce riesgos en la manipulación del huevo.
+
+Finalmente, esta configuración también mantiene coherencia con el código usado en la práctica. El programa arranca con Home, lo cual resetea la postura del robot a este punto inicial y asegura que toda la rutina Paletizado_01 funcione igual cada vez que se ejecuta. Desde ahí se van recorriendo las posiciones del palette en el orden requerido, alternando entre los dos huevos y controlando el vacío según el patrón del caballo. Toda la lógica del movimiento depende completamente de tener un Home consistente, de aquí que esta configuración fuera necesaria.
+
 ## Procedimiento detallado
+Para mover el robot manualmente desde EPSON RC+ 7.0 utilizamos la ventana de **Robot Manager**, que es donde se habilitan los motores, se desbloquean las articulaciones y se selecciona el modo de movimiento. El proceso es sencillo, pero debe hacerse en orden para que el robot acepte los comandos de jogging.
+
+Lo primero es abrir Robot Manager y presionar el botón **Reset**. Esto limpia cualquier alarma o estado previo que impida mover el robot. Una vez el sistema está limpio, activamos los motores seleccionando **Motor ON**. Con esto, el robot queda listo para aceptar movimientos manuales.
+
+![Robot manager](robot_manager.jpg)
+
+A partir de aquí entramos a la pestaña **Jog & Teach**, que es la que permite moverlo articulado o cartesiano. En esta vista están los botones de traslación y rotación, junto con la posición actual del robot y el selector de modo. Para moverlo de manera articular, simplemente cambiamos el parámetro **Mode a Joint**; con esto, cada flecha corresponde al movimiento directo de una articulación. Si queremos moverlo en coordenadas cartesiana (X, Y, Z), entonces dejamos **Mode: Tool o Mode: World**, dependiendo de si queremos que los desplazamientos sigan el sistema de la herramienta o el del robot.
+
+![Jog & Teach](jogyteach.jpg)
+
+El movimiento lineal se hace con las flechas de **X, Y y Z**, mientras que las rotaciones se controlan con los botones **U, V y W**. En esta misma ventana podemos escoger la velocidad del jogging (Low, Medium o High) y la distancia de avance de cada pulsación. Con estas opciones ya es posible mover el robot libremente, registrar puntos y verificar las posiciones antes de programar.
+
 ## Explicación completa
 ## Descripción funcionalidades EPSON RC+ 7.0
 ## Análisis comparativo EPSON RC+ 7.0, RoboDK y RobotStudio
