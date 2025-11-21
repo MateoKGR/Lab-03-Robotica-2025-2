@@ -106,8 +106,35 @@ RobotStudio, desarrollado por ABB, es a nuestro juicio el entorno más completo 
 EPSON RC+ es bueno para la práctica directa con el manipulador EPSON T3-401S; RoboDK es el más versátil para comparar y probar diferentes marcas; y RobotStudio tiene una simulación más avanzada, aunque está cerrado al ecosistema ABB.
 
 ## Diseño técnico del gripper neumático
+## **Diseño técnico del gripper neumático por vacío, incluyendo diagrama esquemático, componentes utilizados y configuración de las E/S digitales del robot**
+
+Para este laboratorio diseñamos un gripper neumático por vacío pensado específicamente para manipular huevos sin aplicar fuerza mecánica directa. La idea fue mantener la estructura lo más simple posible, aprovechando el hecho de que el robot EPSON T3-401S ya cuenta con salidas digitales que permiten controlar electroválvulas externas.
+
+El gripper está compuesto por una pieza impresa en 3D que diseñamos en Autodesk Inventor. Esta pieza funciona como adaptador mecánico entre la brida del robot y la ventosa de succión. Su función principal es posicionar correctamente la ventosa, mantener la rigidez del conjunto y permitir el paso de la manguera que conecta con el sistema de vacío.
+
+Aquí se puede ver el modelo generado en Inventor:
+
+![Modelo Gripper](/images/gripper.jpg)
+
+El sistema neumático utilizado es sencillo: una ventosa de vacío conectada a un mini generador de vacío o bomba externa, controlada mediante una electroválvula. La electroválvula es la encargada de activar o cortar el flujo de vacío, y su funcionamiento depende directamente de la señal digital enviada desde el controlador del EPSON T3-401S.
+
+El diagrama esquemático del sistema es el siguiente:
+
+![](/img/diagrama.png)
+
+La integración con el robot se realizó a través de las **E/S digitales**, utilizando la salida **Out_9** como la señal encargada de accionar el vacío. Cuando Out_9 está en estado **ON**, la electroválvula se activa y la ventosa genera vacío; cuando Out_9 está en **OFF**, el vacío se corta y el objeto se libera de forma segura. Esto nos permitió controlar todo el proceso directamente desde el programa del robot.
+
+En el código que utilizamos (fragmento mostrado abajo), se puede ver cómo Out_9 se activa y desactiva dependiendo del momento en el que se debe recoger o soltar el huevo. Esta lógica se integra dentro de la rutina `Paletizado_01`, que es donde el robot ejecuta los movimientos siguiendo el patrón requerido:
+
+```vb
+On Out_9   'Activa el vacío para agarrar el huevo
+Off Out_9  'Desactiva el vacío para soltarlo
 
 ## Diagrama de flujo
+
 ## Plano de planta
+![Plano de planta](images/planoplanta.jpg)
+
 ## Código desarrollado
+Ajuntado en la carpeta codigo
 ## Videos
