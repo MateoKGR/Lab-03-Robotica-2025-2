@@ -106,7 +106,6 @@ RobotStudio, desarrollado por ABB, es a nuestro juicio el entorno más completo 
 EPSON RC+ es bueno para la práctica directa con el manipulador EPSON T3-401S; RoboDK es el más versátil para comparar y probar diferentes marcas; y RobotStudio tiene una simulación más avanzada, aunque está cerrado al ecosistema ABB.
 
 ## Diseño técnico del gripper neumático
-## **Diseño técnico del gripper neumático por vacío, incluyendo diagrama esquemático, componentes utilizados y configuración de las E/S digitales del robot**
 
 Para este laboratorio diseñamos un gripper neumático por vacío pensado específicamente para manipular huevos sin aplicar fuerza mecánica directa. La idea fue mantener la estructura lo más simple posible, aprovechando el hecho de que el robot EPSON T3-401S ya cuenta con salidas digitales que permiten controlar electroválvulas externas. La prioridad era asegurar un agarre suave, estable y repetible durante toda la trayectoria programada.
 
@@ -118,10 +117,6 @@ Aquí se puede ver el modelo generado en Inventor:
 ![Modelo Gripper](/images/gripper.jpg)
 
 En cuanto al sistema neumático, utilizamos un compresor como fuente de aire, junto con una **válvula reguladora** para ajustar la presión de trabajo. Luego incorporamos una **válvula 5/2**, encargada de suministrar o cortar el paso de aire hacia el generador de vacío. El dispositivo responsable de generar el vacío es un **eyector neumático**, que aprovecha el flujo de aire comprimido para crear succión. También utilizamos mangueras, raccords y conectores estándar para garantizar un flujo constante y sin fugas hacia la ventosa.
-
-El diagrama esquemático del sistema es el siguiente:
-
-![](/img/diagrama.png)
 
 La integración con el robot se realizó a través de las **E/S digitales**, usando la salida **Out_9** como la señal encargada de controlar la electroválvula. En nuestro caso, la lógica operó de forma invertida debido al uso de un módulo óptico:  
 - **Out_9 = OFF → La electroválvula se activa → Se genera vacío (agarre)**  
