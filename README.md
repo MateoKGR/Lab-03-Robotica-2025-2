@@ -122,7 +122,7 @@ La integración con el robot se realizó a través de las **E/S digitales**, usa
 - **Out_9 = OFF → La electroválvula se activa → Se genera vacío (agarre)**  
 - **Out_9 = ON  → La electroválvula se desactiva → Se libera el objeto (suelta)**  
 
-El módulo óptico cumple la función de aislar eléctricamente el controlador del robot y manejar los **20 V** necesarios para activar el relé de la electroválvula. Cuando el robot cambia el estado de Out_9, el módulo conmuta y permite energizar o cortar la válvula dependiendo del caso. Este sistema es seguro y protege la electrónica del robot.
+El módulo óptico cumple la función de aislar eléctricamente el controlador del robot y manejar la potencia necesaria para activar el relé de la electroválvula. Cuando el robot cambia el estado de Out_9, el módulo conmuta y permite energizar o cortar la válvula dependiendo del caso. Este sistema es seguro y protege la electrónica del robot.
 
 En el código utilizado (fragmento mostrado abajo), se observa cómo se activa o desactiva Out_9 según el momento de tomar o soltar el huevo. Esta lógica hace parte de la rutina `Paletizado_01`, donde se ejecutan los desplazamientos siguiendo el patrón requerido:
 
