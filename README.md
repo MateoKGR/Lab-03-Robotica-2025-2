@@ -129,8 +129,6 @@ En el código utilizado (fragmento mostrado abajo), se observa cómo se activa o
 On Out_9   Activa el vacío para agarrar el huevo
 Off Out_9  Desactiva el vacío para soltarlo
 
-## Diagrama de flujo
-
 ## Plano de planta
 ![Plano de planta](images/planoplanta.jpg)
 
