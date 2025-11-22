@@ -42,7 +42,9 @@ Indice:
 
 ## Descripción de las configuraciones home
 
-Para este laboratorio definimos una configuración Home personalizada para el EPSON T3-401S, diferente a la que aparece por defecto cuando el robot inicia en EPSON RC+. La idea de esta configuración es sencilla: queríamos que el robot arrancara situado exactamente en la mitad del área de trabajo, con el brazo orientado hacia adelante, de manera que el alcance fuera simétrico hacia ambos lados. Por eso la articulación 1 se dejó a 90°, ya que esta orientación coloca el brazo principal alineado con el centro de la mesa, evitando que el robot empiece “sesgado” hacia un lado.
+Para este laboratorio definimos una configuración Home personalizada para el EPSON T3-401S, diferente a la que aparece por defecto cuando el robot inicia en EPSON RC+. La idea de esta configuración es sencilla: queríamos que el robot arrancara situado exactamente en la mitad del área de trabajo, con el brazo orientado hacia adelante, de manera que el alcance fuera simétrico hacia ambos lados. Por eso la articulación 1 se dejó a 90° que en pulsos equivalen a 204800, ya que esta orientación coloca el brazo principal alineado con el centro de la mesa, evitando que el robot empiece “sesgado” hacia un lado.
+
+![Pulsos](images/pulsos.jpg)
 
 Una vez fijamos ese punto base, ajustamos las demás articulaciones para dejar el robot en una postura estable y segura: el eje vertical se ubicó a una altura que evitará cualquier colisión con la cubeta, y el eje de la herramienta se orientó recto, lo cual facilita el acople del gripper y las primeras aproximaciones a los palettes. Esta posición de Home se convirtió en la referencia de todo el trabajo del laboratorio: desde aquí se definieron los perfiles iniciales de los actuadores, el origen del palette de 30 posiciones (6×5) y la ubicación relativa de los dos huevos que se debían mover.
 
