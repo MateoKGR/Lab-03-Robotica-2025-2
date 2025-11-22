@@ -126,10 +126,8 @@ El módulo óptico cumple la función de aislar eléctricamente el controlador d
 
 En el código utilizado (fragmento mostrado abajo), se observa cómo se activa o desactiva Out_9 según el momento de tomar o soltar el huevo. Esta lógica hace parte de la rutina `Paletizado_01`, donde se ejecutan los desplazamientos siguiendo el patrón requerido:
 
-```vb
-On Out_9   'Activa el vacío para agarrar el huevo
-Off Out_9  'Desactiva el vacío para soltarlo
-
+On Out_9   Activa el vacío para agarrar el huevo
+Off Out_9  Desactiva el vacío para soltarlo
 
 ## Diagrama de flujo
 
