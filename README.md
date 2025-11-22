@@ -116,7 +116,7 @@ Aquí se puede ver el modelo generado en Inventor:
 
 ![Modelo Gripper](/images/gripper.jpg)
 
-En cuanto al sistema neumático, utilizamos un compresor como fuente de aire, junto con una **válvula reguladora** para ajustar la presión de trabajo. Luego incorporamos una **válvula 5/2**, encargada de suministrar o cortar el paso de aire hacia el generador de vacío. El dispositivo responsable de generar el vacío es un **eyector neumático**, que aprovecha el flujo de aire comprimido para crear succión. También utilizamos mangueras, raccords y conectores estándar para garantizar un flujo constante y sin fugas hacia la ventosa.
+En cuanto al sistema neumático, utilizamos un compresor como fuente de aire, junto con una **válvula reguladora** para ajustar la presión de trabajo. Luego incorporamos una **electro válvula**, encargada de suministrar o cortar el paso de aire hacia el generador de vacío. El dispositivo responsable de generar el vacío es un **venturi**, que aprovecha el flujo de aire comprimido para crear succión. También utilizamos mangueras, raccords y conectores estándar para garantizar un flujo constante y sin fugas hacia la ventosa.
 
 La integración con el robot se realizó a través de las **E/S digitales**, usando la salida **Out_9** como la señal encargada de controlar la electroválvula. En nuestro caso, la lógica operó de forma invertida debido al uso de un módulo óptico:  
 - **Out_9 = OFF → La electroválvula se activa → Se genera vacío (agarre)**  
