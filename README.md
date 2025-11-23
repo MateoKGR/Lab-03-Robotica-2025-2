@@ -128,6 +128,9 @@ El módulo óptico cumple la función de aislar eléctricamente el controlador d
 
 En el código utilizado, se observa cómo se activa o desactiva Out_9 según el momento de tomar o soltar el huevo. Esta lógica hace parte de la rutina, donde se ejecutan los desplazamientos siguiendo el patrón requerido.
 
+## Diagrama de flujo
+![Diagrama de flujo](images/diagrama.jpg)
+
 ## Plano de planta
 ![Plano de planta](images/planoplanta.jpg)
 
