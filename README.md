@@ -135,4 +135,5 @@ En el código utilizado, se observa cómo se activa o desactiva Out_9 según el 
 ![Plano de planta](images/planoplanta.jpg)
 
 ## Código desarrollado y videos
-Ajuntos en las carpetas correspondientes donde se aprecian los puntos bajos los cuales se definio el pallet.
+Adjuntamos en las carpetas correspondientes donde se aprecian los puntos bajos los cuales se definio el pallet.
+
